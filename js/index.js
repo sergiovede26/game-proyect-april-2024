@@ -169,9 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 playerLeftSpace += 4; //original 5;
                 player.style.left = playerLeftSpace + 'px';
             } 
-            else {
-                moveLeft();
-            }
+            // else {
+            //     moveLeft();
+            // }
         }, 20); //20
         player.querySelector('img').src = './img/player01.png';
     }

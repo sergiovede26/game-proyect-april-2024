@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isJumping = false;
         clearTimeout(UpTimerId); //Because we're falling
         downTimerId = setInterval(() => {
-            playerBtmSpace -= 5; // 5 drecreasing player bottom space;
+            playerBtmSpace -= 6; // 5 drecreasing player bottom space;
             player.style.bottom = playerBtmSpace + 'px';
             if(playerBtmSpace <= 0) {
                 gameOver();

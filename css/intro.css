@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    height: 100VH;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    color: aliceblue;
+    }
+    
+    .intro {
+      width: 400px;
+      height: 600px;
+      margin-top: 50px;
+      background-image: url(/img/background-2.png);
+      position: relative;
+      font-size: 30px;
+      text-align: center;
+      overflow: hidden;
+      display: block;
+    }
+
+    .intro img {
+        width: 40%;
+    }
+
+    .startButton {
+        margin: 50px;
+        padding: 10px 30px;
+        background-color:chartreuse;
+        font-family: "Pixelify Sans", sans-serif;
+        font-weight: 400;
+    }

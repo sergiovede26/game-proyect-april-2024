@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         player.classList.add('player')     //adding the class player to the div create with the function.
   
         const playerImg = document.createElement('img');
-        playerImg.src = '../img/player01.png';
+        playerImg.src = 'img/player.png';
         playerImg.style.width = 45 + 'px';
         playerImg.style.height = 45 + 'px';
         player.appendChild(playerImg);
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 20); //20 milisecs
   
-        player.querySelector('img').src = '../img/player01-left.png';
+        player.querySelector('img').src = 'img/player01-left.png';
     }
   
     //Moving Right Command:
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //     moveLeft();
             // }
         }, 20); //20
-        player.querySelector('img').src = '../img/player01.png';
+        player.querySelector('img').src = 'img/player01.png';
     }
     
     

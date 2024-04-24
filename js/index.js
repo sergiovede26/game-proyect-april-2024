@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         player.classList.add('player')     //adding the class player to the div create with the function.
   
         const playerImg = document.createElement('img');
-        playerImg.src = 'img/player.png';
+        playerImg.src = 'img/player01.png';
         playerImg.style.width = 45 + 'px';
         playerImg.style.height = 45 + 'px';
         player.appendChild(playerImg);

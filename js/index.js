@@ -59,13 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function movePlatforms() {
-    if (playerBtmSpace < 600) { //200**
+    if (playerBtmSpace < 500) { //200**
       platforms.forEach((platform) => {
         platform.bottom -= 4; //4
         let brick = platform.brick;
         brick.style.bottom = platform.bottom + "px";
 
-        if (platform.bottom < 3) { //10
+        if (platform.bottom < 2) { //10
           let firstPlatform = platforms[0].brick; // Posición en la parte superior
           firstPlatform.classList.remove("brick");
           platforms.shift();

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jumping Game</title>
-    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="stylesheet" href="./css/main.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,10 +15,13 @@
   </head>
 
   <body>
-
-    <div class="grid"></div>
-
+    <div class="grid">
+        <div id="score-container">
+          <span id="score"></span>
+        </div>
+    </div>
+    <audio id="jumpSound" src="./sounds/jump_effect.wav"></audio>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="./js/index.js"></script>
   </body>
-  
 </html>

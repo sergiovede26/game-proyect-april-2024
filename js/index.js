@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isGameOver = false; //I'm gonna change it for true later...
   let platformCount = 5; //5
+  let eggCount = 2; //new
   let platforms = [];
+  let eggsArray = [];
   let score = 0;
   let playerLeftSpace = 50; //50
   let playerStartPoint = 150; //150 global
@@ -21,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   class Platform {
     constructor(newPlatBottom) {
-      this.left = Math.random() * 415; //CAMBIAR TO 315
+      this.left = Math.random() * 415; //change to 315
       this.bottom = newPlatBottom;
       this.brick = document.createElement("div");
 
@@ -33,26 +35,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  class Egg {           //New
+    constructor(newEggBottom) {
+        this.left = Math.random() * 415; //change to 315
+        this.bottom = newEggBottom;
+        this.egg = document.createElement("div");
+  
+        const eggTwo = this.egg;
+        eggTwo.classList.add("egg");
+        eggTwo.style.left = this.left + "px";
+        grid.appendChild(eggTwo); //adding eggs
+      }
+  }
+
+
   function createPlatforms() {
-    for (let i = 0; i < platformCount; i++) {
-      //for create multiple
-      let platformGap = 600 / 5; //*platformCount to calculate the (brecha) btwn each array;
-      let newPlatBottom = 50 + i * platformGap; //100
+    for (let i = 0; i < platformCount; i++) { //for create multiple
+      let platformGap = 600 / platformCount; //*platformCount to calculate the (brecha) btwn each array;
+      let newPlatBottom = 100 + i * platformGap; //100
       let newPlatform = new Platform(newPlatBottom);
       platforms.push(newPlatform);
     }
   }
 
   function movePlatforms() {
-    if (playerBtmSpace < 700) {
-      //200**
+    if (playerBtmSpace < 600) { //200**
       platforms.forEach((platform) => {
         platform.bottom -= 4; //4
         let brick = platform.brick;
         brick.style.bottom = platform.bottom + "px";
 
-        if (platform.bottom < 3) {
-          //10
+        if (platform.bottom < 3) { //10
           let firstPlatform = platforms[0].brick; // Posición en la parte superior
           firstPlatform.classList.remove("brick");
           platforms.shift();

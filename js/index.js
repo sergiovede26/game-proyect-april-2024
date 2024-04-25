@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
     leftTimerId = setInterval(() => {
       if (playerLeftSpace > 0) {
         // Check if player is within the left boundary
-        console.log("going left");
+        //console.log("going left");
         playerLeftSpace -= 5; // 5
         player.style.left = playerLeftSpace + "px";
       } else {
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     isGoingRight = true;
     rightTimerId = setInterval(() => {
       if (playerLeftSpace < 415) {
-        console.log("going rigth");
+        //console.log("going rigth");
         playerLeftSpace += 5; // vel. increased 5;
         player.style.left = playerLeftSpace + "px";
       } else {
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isGameOver) {
       createPlatforms();
       createPlayer();
-      setInterval(movePlatforms, 40); // Llama a movePlatforms cada 20 milisegundos
+      setInterval(movePlatforms, 40); // is calling movePlatforms every 20 milisec
       jump();
       document.addEventListener("keydown", control);
     }

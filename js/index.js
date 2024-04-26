@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
   const player = document.createElement("div"); //creating player div...
   const scorePoints = document.getElementById("score");
+  const backgroundMusic = document.getElementById("back-music");
+  const jumpSoundEffect = document.getElementById("jumpSound");
+  const gameOverSound = document.getElementById("game-over-sound");
 
   let isGameOver = false; //I'm gonna change it for true later...
   let platformCount = 5; //5
@@ -35,19 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  class Egg {           //New
-    constructor(newEggBottom) {
-        this.left = Math.random() * 415; //change to 315
-        this.bottom = newEggBottom;
-        this.egg = document.createElement("div");
-  
-        const eggTwo = this.egg;
-        eggTwo.classList.add("egg");
-        eggTwo.style.left = this.left + "px";
-        grid.appendChild(eggTwo); //adding eggs
-      }
-  }
-
 
   function createPlatforms() {
     for (let i = 0; i < platformCount; i++) { //for create multiple
@@ -59,13 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function movePlatforms() {
-    if (playerBtmSpace < 500) { //200**
+    if (playerBtmSpace < 600) { //200**
       platforms.forEach((platform) => {
         platform.bottom -= 4; //4
         let brick = platform.brick;
         brick.style.bottom = platform.bottom + "px";
 
-        if (platform.bottom < 2) { //10
+        if (platform.bottom < 1) { //10
           let firstPlatform = platforms[0].brick; // Posición en la parte superior
           firstPlatform.classList.remove("brick");
           platforms.shift();
@@ -118,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
           playerStartPoint = playerBtmSpace;
           jump();
           scorePoints.textContent = `SCORE: ${score++}`;
-          playSound();
           console.log("startPoint", playerStartPoint);
           isJumping = true; //true
         }
@@ -129,11 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function jump() {
     clearInterval(downTimerId);
     isJumping = true;
-    document.getElementById('jumpSound').play();
+    jumpSoundEffect.play();
+    jumpSoundEffect.volume = 0.3
     UpTimerId = setInterval(() => {
       playerBtmSpace += 20; //20
       player.style.bottom = playerBtmSpace + "px";
-      if (playerBtmSpace > playerStartPoint + 300) { //original value = 200
+      if (playerBtmSpace > playerStartPoint + 250) { //original value = 200
         fall();
         isJumping = false;
       }
@@ -152,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (playerLeftSpace > 0) {
         // Check if player is within the left boundary
         //console.log("going left");
-        playerLeftSpace -= 5; // 5
+        playerLeftSpace -= 4; // 5
         player.style.left = playerLeftSpace + "px";
       } else {
         clearInterval(leftTimerId); // Clear interval if player hits left boundary
@@ -174,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rightTimerId = setInterval(() => {
       if (playerLeftSpace < 415) {
         //console.log("going rigth");
-        playerLeftSpace += 5; // vel. increased 5;
+        playerLeftSpace += 4; // vel. increased 5;
         player.style.left = playerLeftSpace + "px";
       } else {
         clearInterval(rightTimerId); //
@@ -186,13 +176,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // calling the functions with the keyboard:
   function control(e) {
+    console.log("Key pressed:", e.key);
     player.style.bottom = playerBtmSpace + "px";
     if (e.key === "ArrowLeft") {
+      console.log("Moving left...");
       moveLeft();
     } else if (e.key === "ArrowRight") {
+      console.log("Moving right...");
       moveRight();
     }
   }
+  
 
   function start() {
     scorePoints.textContent = `SCORE: ${score}`; //to show initial SCORE = 0
@@ -202,6 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
       setInterval(movePlatforms, 40); // is calling movePlatforms every 20 milisec
       jump();
       document.addEventListener("keydown", control);
+      backgroundMusic.play();
+      backgroundMusic.volume = 0.3;
     }
   }
 
@@ -212,6 +208,11 @@ document.addEventListener("DOMContentLoaded", () => {
     while (grid.firstChild) {
       grid.removeChild(grid.firstChild);
     }
+
+    backgroundMusic.volume = 0;
+    gameOverSound.play();
+    gameOverSound.volume = 0.3
+
     grid.innerHTML = `Game Over! Your Score: ${score}`;
     clearInterval(downTimerId);
     clearInterval(UpTimerId);

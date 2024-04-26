@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   function start() {
-    scorePoints.textContent = `SCORE: ${score}`; //to show initial SCORE = 0
+    scorePoints.textContent = `SCORE: ${score++}`; //to show initial SCORE = 0
     if (!isGameOver) {
       createPlatforms();
       createPlayer();

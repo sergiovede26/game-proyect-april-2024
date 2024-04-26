@@ -16,6 +16,10 @@ I've created a simple based `Object-oriented programming` game with a 66% of its
 
 - Everytime you catch a platform your score is gonna increase 1 point!
 
+## PLAY HERE =>
+
+https://sergiovede26.github.io/game-proyect-april-2024/
+
 <br>
 
 ![Alien Survivor v.01](./img/alien-bottie.gif)

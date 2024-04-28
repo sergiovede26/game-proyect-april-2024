@@ -8,9 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isGameOver = false; //I'm gonna change it for true later...
   let platformCount = 5; //5
-  let eggCount = 2; //new
   let platforms = [];
-  let eggsArray = [];
   let score = 0;
   let playerLeftSpace = 50; //50
   let playerStartPoint = 150; //150 global
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.appendChild(brick); //adding bricks
     }
   }
-
 
   function createPlatforms() {
     for (let i = 0; i < platformCount; i++) { //for create multiple
